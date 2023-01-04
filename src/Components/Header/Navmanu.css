@@ -1,0 +1,15 @@
+.me-auto a{
+    text-decoration: none;
+    margin-left: 15px;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.nav-last a {
+    text-decoration: none;
+    margin-left: 48px;
+    color: #4e3002;
+    font-family: inherit;
+    font-weight: 700;
+    margin-bottom: 10px;
+}

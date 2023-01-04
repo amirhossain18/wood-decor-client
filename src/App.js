@@ -1,9 +1,14 @@
 import './App.css';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './Components/Router/Router';
+
 function App() {
   return (
-    <div className="App">
-     <h2>Wood-decor-site</h2>
+    <div>
+   <RouterProvider router={router}></RouterProvider>
+  
     </div>
   );
 }

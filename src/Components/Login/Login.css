@@ -1,0 +1,14 @@
+.login-page {
+    z-index: 0;
+    display: flex;
+    max-width: 80rem;
+    background-image: url(https://templates.hibootstrap.com/medizo/default/assets/img/emergency/emergency-shape.png);
+   background-repeat: no-repeat;
+   background-size: cover;
+    gap: 1rem;
+    padding: 1rem;
+    flex-direction: row;
+    /* align-content: space-between; */
+    justify-content: center;
+    align-items: center;
+}
