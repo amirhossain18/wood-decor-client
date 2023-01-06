@@ -1,8 +1,18 @@
-import React from 'react';
-import { Navbar } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const TopManu = () => {
+
+
+
+  const {user , logout}= useContext(AuthContext)
+  const handleLogOut = () => {
+    logout()
+      .then(() => {})
+      .catch((err) => console.log(err));
+  };
     return (
         <Navbar className="navbar navbar-light"  style={{backgroundColor: '#e3f2fd'}}>
  
@@ -24,7 +34,30 @@ const TopManu = () => {
     </form>
         </Navbar> */}
         <Navbar.Collapse className="justify-content-end">
-        <NavLink to='login'> Log In </NavLink>
+       
+
+        {user?.uid ? (
+              <>
+                <Nav className="nav-last mr-5">  {user.email}
+             <img className="rounded-circle w-10 m-2" src={user.photoURL} alt="" /> 
+                </Nav>
+               
+                <button className="btn btn-danger" onClick={handleLogOut}>
+                  Sign Out
+                </button>
+              </>
+            ) : (
+              <div className="btn btn-success text-white">
+                <NavLink
+                  className={({ isactives, isPending }) => {
+                    return isactives ? "actives" : "text-white";
+                  }}
+                  to="login"
+                >
+                  Login
+                </NavLink>
+              </div>
+            )}
         </Navbar.Collapse>
 
     </Navbar>

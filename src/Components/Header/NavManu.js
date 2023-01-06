@@ -1,37 +1,44 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Offcanvas } from 'react-bootstrap';
-import {  NavLink } from 'react-router-dom';
+import {  Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider';
 import './Navmanu.css'
-const NavbarItems = () => {
+const NavManu = () => {
   let activeStyle = {
     textDecoration: "underline 5px solid green",
     color: "green",
     marginBottom: "1px solid green",
   };
   const [show, setShow] = useState(false);
-
+  const {user}= useContext(AuthContext)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
     return (
       
         <div>
-            <Button className="d-sm-none d-md-block d-xxl-block" variant="primary" onClick={handleShow}>
-        Launch
+            <Button className="d-sm-none d-md-block d-xxl-block d-lg-none" variant="primary" onClick={handleShow}>
+        Category
       </Button>
     <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+          <Offcanvas.Title>Category</Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
+        <Offcanvas.Body className="items">
+         <Link to="home"> Home</Link>
+         <Link to="product"> Product</Link>
+         <Link to="order"> Order</Link>
+       {
+        user?.email ? 
+        <Link to="login"> Log out</Link>
+        :<Link to="login"> Sign in</Link>
+       }
         </Offcanvas.Body>
       </Offcanvas>
          <div className="navbar bg-base-100">
           
     
   <div className="navbar-center d-xl-block hidden lg:flex">
-    <ul className=" nav-last">
+    <ul className="nav-last">
    
 
     <NavLink
@@ -42,27 +49,27 @@ const NavbarItems = () => {
               </NavLink>
               <NavLink
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                to="blog"
+                to="products"
               >
-              Blogs
+              Product
               </NavLink>
                <NavLink
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                to="Doctors"
+                to="order"
               >
-                Doctors
+               Order
               </NavLink>
               <NavLink
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                to="appointment"
+                to="hotdeal"
               >
-               Appointments
+               HotDeal
               </NavLink>
               <NavLink
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                to="serial"
+                to="review"
               >
-              Serial
+              Review
               </NavLink>
   
     </ul>
@@ -75,4 +82,4 @@ const NavbarItems = () => {
     );
 };
 
-export default NavbarItems;
+export default NavManu;
