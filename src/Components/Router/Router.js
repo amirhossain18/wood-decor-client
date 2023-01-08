@@ -6,6 +6,10 @@ import Login from "../Login/Login";
 import Registration from "../Login/Registration";
 import Products from "../Products/Products";
 import Order from "../Order/Order";
+import PrivateRoute from "./PrivateRoute";
+import HomeFurniture from "../../Pages/HomeFurniture/HomeFurniture";
+import Other from "../../Pages/HomeFurniture/Other";
+
 export const router= createBrowserRouter([
 
     {
@@ -34,12 +38,30 @@ export const router= createBrowserRouter([
               },
               {
                 path:"products",
+                loader: ()=> fetch('http://localhost:5000/products'), 
                 element:<Products></Products>
               },
               {
                 path:"order",
-                element:<Order></Order>
+                element:<PrivateRoute><Order></Order></PrivateRoute>
+              },
+              {
+                path:"products/house",
+                loader: ()=> fetch('http://localhost:5000/products/house'), 
+                element:<HomeFurniture></HomeFurniture>
+              },
+              {
+                path:"products/office",
+                loader: ()=> fetch('http://localhost:5000/products/office'), 
+                element:<HomeFurniture></HomeFurniture>
+              },
+              {
+                path:"products/other",
+                loader: ()=> fetch('http://localhost:5000/products/other'), 
+                element:<Other></Other>
               }
+              
+              
 
         ]
     }

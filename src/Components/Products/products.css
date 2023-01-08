@@ -1,0 +1,20 @@
+.new{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    
+}
+
+.header{
+    text-align: center;
+    font-size: 30px;
+    color: blue;
+}
+
+
+
+.productPhoto {
+    height: 250px;
+}
+
+

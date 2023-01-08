@@ -1,16 +1,18 @@
 import React, { useContext, useState } from 'react';
 import image from '../../Images/Login/login.jpg'
 import { useForm } from 'react-hook-form';
-
 import "./Login.css"
-import { Navigate, NavLink } from 'react-router-dom';
+import {  NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
+
 const Login = () => {
     const { register, formState:{errors}, handleSubmit} = useForm();
     const {emailSignin , providerGoogle }= useContext(AuthContext);
     const [loginError , setLoginError]= useState('');
- 
+    const Navigate= useNavigate()
+    const location = useLocation()
+    const from= location.state?.from?.pathname || '/';
 
     
     const onSubmit = (data) => {
@@ -20,6 +22,7 @@ const Login = () => {
        .then(result =>{
         const user=result.user;
         console.log(user)
+        Navigate(from , {replace: true})
      })
      
       .catch(error=>{
@@ -37,7 +40,7 @@ const Login = () => {
         .then(result=>{
             const user = result.user
             console.log(user)
-            Navigate("/")
+            Navigate(from , {replace: true})
         })
         .catch(err=>console.error(err))
     }

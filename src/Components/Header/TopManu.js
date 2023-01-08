@@ -8,6 +8,7 @@ const TopManu = () => {
 
 
   const {user , logout}= useContext(AuthContext)
+  console.log(user)
   const handleLogOut = () => {
     logout()
       .then(() => {})
@@ -38,8 +39,8 @@ const TopManu = () => {
 
         {user?.uid ? (
               <>
-                <Nav className="nav-last mr-5">  {user.email}
-             <img className="rounded-circle w-10 m-2" src={user.photoURL} alt="" /> 
+                <Nav className="nav-last mr-5"> 
+             <img className="rounded-circle w-10 m-2" src={user.displayName} alt="" /> 
                 </Nav>
                
                 <button className="btn btn-danger" onClick={handleLogOut}>
