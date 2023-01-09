@@ -19,7 +19,7 @@ const Slider = () => {
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>First slide label</h3>
+            <h3>Dining table</h3>
           
           </Carousel.Caption>
         </Carousel.Item>
@@ -31,7 +31,7 @@ const Slider = () => {
           />
   
           <Carousel.Caption>
-            <h3>Second slide label</h3>
+            <h3>Second Dining table</h3>
     
           </Carousel.Caption>
         </Carousel.Item>
@@ -43,7 +43,7 @@ const Slider = () => {
           />
   
           <Carousel.Caption>
-            <h3>Third slide label</h3>
+            <h3>Third Dining table</h3>
             
           </Carousel.Caption>
         </Carousel.Item>

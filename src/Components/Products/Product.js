@@ -1,10 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+
 
 
 
 const Product = ({product}) => {
-    const { title ,url,brand,category,price,seller_no }= product
-    console.log(title)
+  
+    const { title ,url,brand,category,price,seller_no , _id }= product
+    console.log(_id)
     return (
 <div className="card">
        
@@ -16,12 +20,15 @@ const Product = ({product}) => {
           <h6>category: {category}</h6>
           <h4>Price: {price}</h4>
           <h6>Phone: {seller_no}</h6>
-         
-         
-          <button href="#s" className="btn btn-primary">Buy Now</button>
+          <Link product={product} to={`checkout/${_id}`}>
+          <button className="btn btn-primary">Go somewhere</button>
+          </Link>
+
+
+      
         
         </div >
-        
+    
       </div>
       );
 };

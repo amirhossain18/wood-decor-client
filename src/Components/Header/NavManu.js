@@ -6,11 +6,13 @@ import './Navmanu.css'
 const NavManu = () => {
 
   const {user }= useContext(AuthContext)
-
+const subscrive= ()=>{
+  alert('successFully Subscrive')
+}
  
     return (
       <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-goast">
     <div className="navbar-start">
       <div className="dropdown">
         <label tabIndex={0} className="btn btn-ghost d-lg-none .d-xl-block">
@@ -23,9 +25,10 @@ const NavManu = () => {
              Blog
             
             </NavLink>
-          
+            <NavLink to="blog" className="justify-between"> Blog </NavLink>
+            <NavLink to="blog" className="justify-between"> Blog </NavLink>
           </li>
-          <li><NavLink>Item 3</NavLink></li>
+        
         </ul>
       </div>
       <NavLink className="btn btn-ghost normal-case text-xl ">
@@ -33,27 +36,18 @@ const NavManu = () => {
               <>
                 <Nav className="nav-last mr-5 ">  {user.email}
              
-                </Nav>
-               
-            
+                </Nav> 
               </>
             ) : (
               <div >
-                <NavLink
-              
-               
-                >
-             <h4>Welcome</h4>
-                </NavLink>
+                <NavLink><h4>Welcome</h4></NavLink>
               </div>
             )}
       </NavLink>
     </div>
     <div className="navbar-center hidden lg:flex">
       <ul className="menu menu-horizontal mr-5">
-        <li><NavLink  to="/home" 
-                 >home</NavLink>
-                 </li>
+        <li><NavLink  to="/home">home</NavLink>  </li>
         <li tabIndex={0}>
           <NavLink to="/about" >About </NavLink>
          
@@ -61,7 +55,7 @@ const NavManu = () => {
         <li><NavLink to="/blog">Blog</NavLink></li>
         <li><NavLink to="/products">product</NavLink></li>
         <li><NavLink to="/order">order</NavLink></li>
-        <li><NavLink to="/review">review</NavLink></li>
+     
       </ul>
     </div>
     <div className="navbar-end">
@@ -70,20 +64,17 @@ const NavManu = () => {
                 <Nav className="nav-last mr-5"> 
              <img className="rounded-circle w-10 m-2" src={user.photoURL} alt="" /> 
                 </Nav>
-               
+                <NavLink onClick={subscrive} className="btn btn-warning">  Subscribe now  </NavLink>
              
               </>
             ) : (
               <div >
-                <NavLink
-                 
-                
-                >
-                 
-                </NavLink>
+                  
               </div>
             )}
+             
     </div>
+   
   </div>
      </div>
      

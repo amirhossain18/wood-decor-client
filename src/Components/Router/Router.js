@@ -9,6 +9,8 @@ import Order from "../Order/Order";
 import PrivateRoute from "./PrivateRoute";
 import HomeFurniture from "../../Pages/HomeFurniture/HomeFurniture";
 import Other from "../../Pages/HomeFurniture/Other";
+import About from "../About/About";
+import CheckOut from "../CheckOut/CheckOut";
 
 export const router= createBrowserRouter([
 
@@ -37,8 +39,12 @@ export const router= createBrowserRouter([
                 element:<Registration></Registration>
               },
               {
+                path:"about",
+                element:<About></About>
+              },
+              {
                 path:"products",
-                loader: ()=> fetch('http://localhost:5000/products'), 
+                loader: ()=> fetch('https://wood-decor-server.vercel.app/products'), 
                 element:<Products></Products>
               },
               {
@@ -47,18 +53,24 @@ export const router= createBrowserRouter([
               },
               {
                 path:"products/house",
-                loader: ()=> fetch('http://localhost:5000/products/house'), 
+                loader: ()=> fetch('https://wood-decor-server.vercel.app/products/house'), 
                 element:<HomeFurniture></HomeFurniture>
               },
               {
                 path:"products/office",
-                loader: ()=> fetch('http://localhost:5000/products/office'), 
+                loader: ()=> fetch('https://wood-decor-server.vercel.app/products/office'), 
                 element:<HomeFurniture></HomeFurniture>
               },
               {
                 path:"products/other",
-                loader: ()=> fetch('http://localhost:5000/products/other'), 
+                loader: ()=> fetch('https://wood-decor-server.vercel.app/products/other'), 
                 element:<Other></Other>
+              },
+              {
+                path:"products/checkout/:id",
+             
+                element:<CheckOut></CheckOut>,
+                loader: ({params})=> fetch(`https://wood-decor-server.vercel.app/products/${params.id}`), 
               }
               
               

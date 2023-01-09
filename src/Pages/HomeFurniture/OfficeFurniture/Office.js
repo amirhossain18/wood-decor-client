@@ -9,7 +9,7 @@ const Office = () => {
         <div className='container'>
       
 
-     <div className='new'>
+     <div className='container new'>
      {
         officeProducts.map(Product=><Product
         product={Product}

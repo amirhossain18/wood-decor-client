@@ -6,6 +6,7 @@ import {  NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 
+
 const Login = () => {
     const { register, formState:{errors}, handleSubmit} = useForm();
     const {emailSignin , providerGoogle }= useContext(AuthContext);
@@ -17,12 +18,30 @@ const Login = () => {
     
     const onSubmit = (data) => {
       console.log(data ,errors);
+
+   
+
       setLoginError('');
        emailSignin(data.email, data.password)
        .then(result =>{
         const user=result.user;
         console.log(user)
-        Navigate(from , {replace: true})
+     
+        fetch('https://wood-decor-server.vercel.app/users', {
+          method:'POST',
+          headers:{
+            'content-type': 'application/json'   
+          },  
+          body: JSON.stringify(user)
+      })
+   .then(res => res.json())
+   .then(data => {
+    if(data.acknowledged){
+      alert('successFuly login')
+    }
+   })
+
+
      })
      
       .catch(error=>{
@@ -30,7 +49,7 @@ const Login = () => {
         setLoginError(error.message)
       })
 
-
+      Navigate(from , {replace: true})
     }
 
     const googleProvider= new GoogleAuthProvider()
@@ -41,7 +60,27 @@ const Login = () => {
             const user = result.user
             console.log(user)
             Navigate(from , {replace: true})
-        })
+            fetch('https://wood-decor-server.vercel.app/users', {
+              method:'POST',
+              headers:{
+                'content-type': 'application/json'   
+              },  
+              body: JSON.stringify(user)
+          })
+       .then(res => res.json())
+       .then(data => {
+        if(data.acknowledged){
+       alert('successFuly Log')
+
+        }
+       })
+    
+    
+         })
+      
+          
+
+
         .catch(err=>console.error(err))
     }
     return (  

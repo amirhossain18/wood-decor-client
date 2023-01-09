@@ -1,13 +1,14 @@
 import React from 'react';
 
 import { useLoaderData } from 'react-router-dom';
+import CheckOut from '../CheckOut/CheckOut';
 import Product from './Product';
 import './products.css'
 const Products = () => {
     const products= useLoaderData()
     console.log(products)
     return (
-        <div className='container '>
+        <div className='container'>
             
             <p className='header'>Our all available products</p>
           
@@ -17,12 +18,11 @@ const Products = () => {
         products.map(product=><Product
         product={product}
         ></Product>)
-      }
-    
+      },
+       
      
 
        </div>
-      
      
       </div>
        

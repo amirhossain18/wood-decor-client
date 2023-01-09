@@ -25,7 +25,7 @@ const TopManu = () => {
               height="30"
               className="d-inline-block align-top"
             />
-            Wood Decor
+            ood Decor
           </Navbar.Brand>
         <Navbar.Toggle />
         {/* <Navbar className="d-md-none d-sm-block d-xl-block justify-content-end">

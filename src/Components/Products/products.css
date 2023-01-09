@@ -16,5 +16,28 @@
 .productPhoto {
     height: 250px;
 }
+@media screen and (max-width: 480px) {
+    body {
+      background-color: lightgreen;
+    }
+    .new{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        
+    }
+    
+  }
 
-
+  @media screen and (max-width: 320px) {
+    body {
+      background-color: rgb(68, 79, 131);
+    }
+    .new{
+        display: grid;
+        grid-template-columns: 1fr ;
+        gap: 10px;
+        
+    }
+    
+  }
